@@ -86,9 +86,9 @@ tray := new Tray(settings, Build, updateChecker, snapper)
 
 ; horizontal sizing and direction
 #Left::snapper.moveWindow(0, -1, 0, 0, 0)  ; move left
-#!Left::snapper.moveWindow(0, -1, 0, 0, 0) ; move left
+$#!Left::send, {LWin Down}{Left}{LWin Up}   ; system behavior
 #Right::snapper.moveWindow(0, 1, 0, 0, 0)  ; move right
-#!Right::snapper.moveWindow(0, 1, 0, 0, 0) ; move right
+$#!Right::send, {LWin Down}{Right}{LWin Up} ; system behavior
 #Up::snapper.moveWindow(0, 0, 1, 0, 0)     ; increase width
 #Down::snapper.moveWindow(0, 0, -1, 0, 0)  ; decrease width
 
