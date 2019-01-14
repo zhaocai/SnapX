@@ -85,26 +85,26 @@ tray := new Tray(settings, Build, updateChecker, snapper)
 #MaxThreadsBuffer On
 
 ; horizontal sizing and direction
-#Left::snapper.moveWindow(0, -1, 0, 0, 0)  ; move left
+#Left::snapper.moveWindow(0, -1, 0, 0, 0)   ; move left
+#Right::snapper.moveWindow(0, 1, 0, 0, 0)   ; move right
+#Up::snapper.moveWindow(0, 0, 1, 0, 0)      ; increase width
+#Down::snapper.moveWindow(0, 0, -1, 0, 0)   ; decrease width
 $#!Left::send, {LWin Down}{Left}{LWin Up}   ; system behavior
-#Right::snapper.moveWindow(0, 1, 0, 0, 0)  ; move right
 $#!Right::send, {LWin Down}{Right}{LWin Up} ; system behavior
-#Up::snapper.moveWindow(0, 0, 1, 0, 0)     ; increase width
-#Down::snapper.moveWindow(0, 0, -1, 0, 0)  ; decrease width
 
 ; vertical sizing and direction
-#!Up::snapper.moveWindow(0, 0, 0, -1, 0)   ; move up
-#!Down::snapper.moveWindow(0, 0, 0, 1, 0)  ; move down
-#PgUp::snapper.moveWindow(0, 0, 0, 0, 1)   ; size height toward top
-#PgDn::snapper.moveWindow(0, 0, 0, 0, -1)  ; size height toward bottom
+#!Up::snapper.moveWindow(0, 0, 0, -1, 0)    ; move up
+#!Down::snapper.moveWindow(0, 0, 0, 1, 0)   ; move down
+#+!Up::snapper.moveWindow(0, 0, 0, 0, 1)    ; size height toward top
+#+!Down::snapper.moveWindow(0, 0, 0, 0, -1) ; size height toward bottom
 
 ; movement between multiple monitors
 ; 	sleep allows time for Windows to do the movement to the new monitor before we re-snap according to the new monitor's width/height
-~#+Left::
+~#+Left:: ; Move to monitor on the left
 	Sleep, 10
 	snapper.moveWindow(0, 0, 0, 0, 0)
 	return
-~#+Right::
+~#+Right:: ; Move to monitor on the right
 	Sleep, 10
 	snapper.moveWindow(0, 0, 0, 0, 0)
 	return
